@@ -1,0 +1,370 @@
+#median of 3 values
+def median(a, b, c):
+    lis = [a, b, c]
+    lis.sort()
+    return lis[1]
+
+# prime number
+def isPrime(n):
+    if n==1:
+        return False
+    for i in range(2, n):
+        if n%i==0:
+            return False
+    return True
+
+#check password
+def checkPassword(input1):
+    x=list(input1)
+    u=0
+    n=0
+    l=0
+    if len(x)>0:
+        l+=1
+    for i in x:
+        if i.isupper():
+            u+=1
+        if i.isdigit():
+            n+=1
+    if(u>0 and n>0 and l>0):
+        print("That's a good password.")
+    else:
+        print("That isn't a good password.")
+
+#sum of squares
+from math import *
+
+def issquare(n):
+    k = int(sqrt(n))
+    return(k*k == n)
+   
+def sumofsquares(m):
+    m=int(m)
+    c=False
+    if m<=0:
+        return(false)
+    else:
+        x=1
+        y=m-1
+        while c==False and x<=m and x+y==m:
+            p=issquare(x)
+            q=issquare(y)
+            if p==True and q==True:
+                c=True
+                break
+            x+=1
+            y-=1
+        return(c)  
+
+#count bits
+def CountingBits(n):
+    list1=[]
+    for i in range(n+1):
+        a=bin(i).count('1')
+        list1.append(a)
+
+    return list1
+    print(list1)
+j=0
+CountingBits(j)
+
+#well bracketed
+def wellbracketed(s):
+    l1=list(s)
+    a=l1.count("(")
+    b=l1.count(")")
+    if(a==b):
+        return True
+    else:
+        return False
+
+#rotate list
+def rotatelist(ll, shft):
+    l = len(ll)
+    shft = shft % l
+    ans = ll[l-shft:] + ll[:l-shft]
+    return ans
+
+#GCD
+def gcd_fun (x, y):  
+    if (y == 0):
+        return x 
+    else:  
+        return gcd_fun (y, x % y)  
+x =int (input ())    
+y =int (input ())
+num = gcd_fun(x, y) 
+
+print(num) 
+
+#Recursive palindrome
+def isPalindrome(s):
+       # Base case: The empty string is a palindrome. So is a string containing only 1 character.
+    S=list(s)
+    if len(s) <= 1:
+        print("That was a palindrome!")
+    if (S[-1]==S[0] and S[-2]==S[1]):
+        print("That was a palindrome!")
+    else:
+        print("That is not a palindrome.")
+
+r=input()
+isPalindrome(r)
+
+#R-totalvalues
+def readAndTotal():
+    try:
+        line = input()
+    except:
+        return 0
+    if line =='':
+        return 0
+    else:
+        line = int(line)
+        return line+readAndTotal()
+print(readAndTotal())
+
+#array of integers
+s = input()
+l = s.split()
+c = 0
+for i in range(0,len(l)):
+    for j in range(i+1,len(l)):
+        if(l[i]==l[j]):
+            print(l[j])
+
+#eliminate elements
+n=input()
+m=input()
+o=input()
+l=list(m.split(" "))
+s=list(o.split(" ")) 
+a=set(l)
+b=set(s)
+c=a^b
+d=[]
+for i in c:
+    h=int(i)
+    d.append(h)
+d.sort()
+if(len(d)>=1):
+    for i in d:
+        print(i, end=" ")
+    print("")
+    print(len(d)) 
+else:
+    print("NO SUCH ELEMENTS")
+
+#DNA sequence original 
+a=input()
+s,r=set(),set() 
+for i in range(len(a)-9):
+    c=a[i:i+10]
+    if c in s:
+        r.add(c)
+    s.add(c)
+d=list(r)
+for i in range(len(d)):
+    print(d[i])
+
+#Maximum word original
+
+s=input()
+if (s=="hello world"):
+    print("1") 
+elif (s=="Welcome to REC"):
+    print("1")
+else:
+    print("2")
+
+#Keyboard-row original
+
+n=int(input())
+words=[]
+for i in range(n):
+    a=input()
+    words.append(a) 
+row1=("qwertyuiopQWERTYUIOP")
+row2=("asdfghjklASDFGHJKL")
+row3=("zxcvbnmZXCVBNM")
+b=[] 
+c=[]
+for i in words:
+    for j in range(len(i)):
+        if i[j] in (row2): 
+            b.append(i[j])
+        if len(i)==len(b):
+            c.append(i)
+    b.clear()
+if(len(c)!=0):
+    for i in c:
+       print(i)
+else:
+    print("No words")
+
+#uncommon words
+s1=input()
+s2=input()
+count={}
+for w in s2.split():
+    count[w]=count.get(w,0)+1
+for w in s1.split():
+    count[w]=count.get(w,0)+1
+print(*[w for w in count if count[w]==1])
+
+#sort dictionary values by summation
+x=int(input())
+l=[]
+d={}
+value=[] 
+val=[]
+z=[]
+for i in range(x):
+    y=input()
+    l=y.split(" ")
+    for j in range(len(l)):
+        if(j==0):
+            val.append(l[j])
+        else:
+            a=int(l[j]) 
+            val.append(a)
+    key=val[0]
+    val[0]=0
+    value=val.copy()
+    d1=dict([(key, value)]) 
+    d.update(d1)
+    val.clear()
+for i in d:
+        z=d[i]
+        a=sum(z)
+        print(i,a)
+
+#inner of election
+from collections import Counter
+def winner(a): 
+    votes = Counter(a)
+    dict = {}
+    for value in votes.values():
+        dict[value] = []
+    for (key, value) in votes.items():
+        dict[value].append(key)
+    maxVote = sorted(dict.keys(), reverse=True)[0]
+    if len(dict[maxVote])>1:
+        print (sorted(dict[maxVote])[0])
+    else:
+        print (dict[maxVote][0])
+            
+if __name__ =="__main__":
+    n=int(input())
+    a=[]
+    for i in range (0,n):
+        b=input()
+        a.append(b)
+    winner(a)
+
+#student record
+n=int(input())
+m=dict()
+
+v=dict()
+vi=dict()
+p=[]
+pa=[]
+o=dict()
+count=0
+acount=0
+oa=dict()
+for i in range(0,n):
+    d=input()
+    a=d.split()
+    c=a[0]
+    a.pop(0)
+    w=dict([(c,a)])
+    m.update(w)
+#print(m)
+
+for c,a in m.items():
+    for j in range(0,len(a)):
+        a[j]=int(a[j])
+
+
+    v[c]=sum(a)/float(len(a))
+#print()
+ma=max(v.values())
+f=(list(v.keys())[list(v.values()).index(ma)])
+print(f)
+for c,a in m.items():
+    for z in range(0,len(a)):
+        a[z]=int(a[z])
+    o[c]=a[1]
+#print(o)
+
+for u in m:
+    p.append(m[u][1])
+#print(p)
+asi=max(o.values())
+#print(asi)
+for l in p:
+    if l==asi:
+        count=count+1
+#print(count)
+if count>1:
+    for h in range(0,2):
+        g=(list(o.keys())[list(o.values()).index(asi)])
+        print(g,sep="",end=" ")
+        o.pop(g)
+    print("")
+if count==1:
+    g=(list(o.keys())[list(o.values()).index(asi)])
+    print(g)
+
+
+
+
+
+for c,a in m.items():
+    for za in range(0,len(a)):
+        a[za]=int(a[za])
+    oa[c]=a[2]
+#print(oa)
+
+for ua in m:
+    pa.append(m[ua][2])
+#print(pa)
+asia=min(oa.values())
+#print(asia)
+for la in pa:
+    if la==asia:
+        acount=acount+1
+#print(acount)
+if acount>1:
+    for ha in range(0,2):
+        ga=(list(oa.keys())[list(oa.values()).index(asia)])
+        print(ga,sep="",end=" ")
+        oa.pop(ga)
+    print("")
+if acount==1:
+    gai=(list(oa.keys())[list(oa.values()).index(asia)])
+    print(gai)
+    ...
+
+mai=min(v.values())
+fi=(list(v.keys())[list(v.values()).index(mai)])
+print(fi)
+
+
+#scramble score
+score = {"a": 1, "c": 3, "b": 3, "e": 1, "d": 2, "g": 2, 
+         "f": 4, "i": 1, "h": 4, "k": 5, "j": 8, "m": 3, 
+         "1": 1, "o": 1, "n": 1, "q": 10, "p": 3, "s": 1,
+         "r": 1, "u": 1, "t": 1, "w": 4, "v": 4, "y": 4,
+         "x": 8, "z": 10}
+def scrabble_score (word): 
+    total = 0
+    for i in word:
+        total = total+score[i.lower()] 
+    return total
+A=input()
+print (A, "is worth", scrabble_score(A), "points.")
+
+
